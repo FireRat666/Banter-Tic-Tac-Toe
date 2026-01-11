@@ -20,7 +20,7 @@ The script will automatically initialize, draw the game board, and handle all ga
 You can customize the game's appearance and behavior by adding URL parameters to the script's URL in the Banter Embed settings.
 
 **Example:**
-`https://your-domain.com/TicTacToe.js?instance=game1&boardScale=1.5 1.5 1.5`
+`https://banter-tic-tac-toe.firer.at/TicTacToe.js?instance=game1&boardScale=1.5 1.5 1.5`
 
 ### Available Parameters
 
