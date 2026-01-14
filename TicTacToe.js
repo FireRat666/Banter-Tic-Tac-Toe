@@ -243,10 +243,10 @@
                 });
                 state.cells[r][c] = cellObj;
 
-                // Visible piece placeholder (starts empty)
+                // Visible piece placeholder (starts empty) - needs unique material for color changes
                 const piece = await createBanterObject(state.piecesRoot, BS.GeometryType.BoxGeometry,
                      { width: cellSize * 0.8, height: cellSize * 0.8, depth: 0.05 },
-                     COLORS.empty, new BS.Vector3(x, y, 0.03)
+                     COLORS.empty, new BS.Vector3(x, y, 0.03), false, 1.0, `piece_${r}_${c}`
                 );
                 state.slots[r][c] = piece;
             }
@@ -283,7 +283,7 @@
         ];
     }
 
-    async function createBanterObject(parent, type, dims, colorHex, pos, hasCollider = false, opacity = 1.0) {
+    async function createBanterObject(parent, type, dims, colorHex, pos, hasCollider = false, opacity = 1.0, cacheBust = null) {
         const obj = await new BS.GameObject("Geo").Async();
         await obj.SetParent(parent, false);
 
@@ -297,7 +297,8 @@
         color.w = opacity;
 
         const shader = opacity < 1.0 ? "Unlit/DiffuseTransparent" : "Unlit/Diffuse";
-        await obj.AddComponent(new BS.BanterMaterial(shader, "", color, BS.MaterialSide.Front, false));
+        // Use cacheBust to create unique material instance for objects that need dynamic colors
+        await obj.AddComponent(new BS.BanterMaterial(shader, "", color, BS.MaterialSide.Front, false, cacheBust || ""));
 
         if (hasCollider) {
             let colSize = new BS.Vector3(dims.width || 1, dims.height || 1, dims.depth || 1);
