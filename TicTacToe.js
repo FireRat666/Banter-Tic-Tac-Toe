@@ -26,6 +26,14 @@
         'highlight': 'DiscGreen.glb'
     };
 
+    const COLORS = {
+        board: '#333333',    // Dark Grey Board
+        player1: '#D50000',  // Red ('X')
+        player2: '#FFEA00',  // Yellow ('O')
+        empty: '#FFFFFF',    // Empty slot
+        winHighlight: '#00FF00', // Green highlight for winning pieces
+    };
+
     // Helper to parse Vector3
     const parseVector3 = (str, defaultVal) => {
         if (!str) return defaultVal;
@@ -380,7 +388,7 @@
              // Add material for tinting/lighting
              await piece.AddComponent(new BS.BanterMaterial(shader, "", hexToVector4(colorHex), BS.MaterialSide.Front, false));
 
-            t.localScale = new BS.Vector3(0.06, 0.06, 0.06);
+             t.localScale = new BS.Vector3(0.08, 0.08, 0.08); // Scaled for 0.25 grid
             t.localEulerAngles = new BS.Vector3(90, 0, 0); 
         } catch (glbErr) {
             console.error(`Failed to load GLTF for player ${player}:`, glbErr);
