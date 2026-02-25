@@ -1,4 +1,5 @@
 (function () {
+BS.BanterScene.GetInstance().On("unity-loaded", async () => {
     /**
      * Banter Tic-Tac-Toe Embed Script
      * A fully synced multiplayer Tic-Tac-Toe game for Banter.
@@ -493,9 +494,10 @@
     }
 
     async function init() {
-      console.log(`TicTacToe Waiting for unity-loaded event`);
-        window.addEventListener("unity-loaded", setupScene);
+        console.log(`TicTacToe Loading`);
+        setupScene();
     }
 
     init();
+})
 })();
