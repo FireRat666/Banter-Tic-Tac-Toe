@@ -200,14 +200,6 @@
         return new BS.Vector4(((num >> 16) & 255) / 255, ((num >> 8) & 255) / 255, (num & 255) / 255, 1);
     }
 
-    async function init() {
-        if (!window.BS) {
-            console.error("Banter SDK not found!");
-            return;
-        }
-        BS.BanterScene.GetInstance().On("unity-loaded", setupScene);
-    }
-
     async function setupScene() {
         console.log("TicTacToe: Setup Scene Started");
         state.root = await new BS.GameObject("TicTacToe_Root").Async();
@@ -498,6 +490,11 @@
                 }
             }
         });
+    }
+
+    async function init() {
+      console.log(`TicTacToe Waiting for unity-loaded event`);
+        window.addEventListener("unity-loaded", setupScene);
     }
 
     init();
