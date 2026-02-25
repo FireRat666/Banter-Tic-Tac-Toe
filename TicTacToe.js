@@ -1,5 +1,5 @@
 (function () {
-BS.BanterScene.GetInstance().On("unity-loaded", async () => {
+window.addEventListener("unity-loaded", async () => {
     /**
      * Banter Tic-Tac-Toe Embed Script
      * A fully synced multiplayer Tic-Tac-Toe game for Banter.
