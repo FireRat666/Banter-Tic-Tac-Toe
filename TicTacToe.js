@@ -1,5 +1,5 @@
-(function () {
 window.addEventListener("unity-loaded", async () => {
+(function () {
     /**
      * Banter Tic-Tac-Toe Embed Script
      * A fully synced multiplayer Tic-Tac-Toe game for Banter.
@@ -499,5 +499,5 @@ window.addEventListener("unity-loaded", async () => {
     }
 
     init();
-})
 })();
+});
