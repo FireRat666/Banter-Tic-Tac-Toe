@@ -17,22 +17,33 @@ The script will automatically initialize, draw the game board, and handle all ga
 
 ## Configuration
 
-You can customize the game's appearance and behavior by adding URL parameters to the script's URL in the Banter Embed settings.
+You can customize the game's appearance and behavior using **HTML script attributes** (recommended) or legacy **URL query parameters** (for backwards compatibility).
 
-**Example:**
-`https://banter-tic-tac-toe.firer.at/TicTacToe.js?instance=game1&boardScale=1.5 1.5 1.5`
+**HTML Script Attributes Example (Recommended):**
+```html
+<script src="https://banter-tic-tac-toe.firer.at/TicTacToe.js" instance="game1" boardScale="1.5 1.5 1.5"></script>
+```
 
-### Available Parameters
+**Legacy URL Query Parameters Example:**
+```html
+<script src="https://banter-tic-tac-toe.firer.at/TicTacToe.js?instance=game1&boardScale=1.5+1.5+1.5"></script>
+```
 
-| Parameter         | Type          | Default                               | Description                                                                                             |
+### Available Attributes / Parameters
+
+| Parameter / Attribute | Type          | Default                               | Description                                                                                             |
 | ----------------- | ------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `instance`        | `string`      | (Current URL)                         | An ID to distinguish between multiple game instances. Players in spaces with the same instance ID will be synced. |
-| `boardPosition`   | `Vector3 (string)` | `"0 1.2 0"`                           | The `X Y Z` position of the game board in world space. Values are space-separated.                      |
-| `boardRotation`   | `Vector3 (string)` | `"0 0 0"`                             | The `X Y Z` euler rotation of the game board.                                                           |
-| `boardScale`      | `Vector3 (string)` | `"1 1 1"`                             | The `X Y Z` scale of the entire game object.                                                            |
-| `resetPosition`   | `Vector3 (string)` | `"0 -0.4 0"`                          | The `X Y Z` position of the reset button, relative to the board.                                        |
-| `resetRotation`   | `Vector3 (string)` | `"0 0 0"`                             | The `X Y Z` euler rotation of the reset button.                                                         |
-| `resetScale`      | `Vector3 (string)` | `"1 1 1"`                             | The `X Y Z` scale of the reset button.                                                                  |
-| `hideUI`          | `boolean`     | `false`                               | Set to `true` to hide the reset button.                                                                 |
+| `boardPosition` / `position` / `board-position`   | `Vector3 (string)` | `"0 1.2 0"`                           | The `X Y Z` position of the game board in world space. Values are space-separated.                      |
+| `boardRotation` / `rotation` / `board-rotation`   | `Vector3 (string)` | `"0 0 0"`                             | The `X Y Z` euler rotation of the game board.                                                           |
+| `boardScale` / `scale` / `board-scale`      | `Vector3 (string)` | `"1 1 1"`                             | The `X Y Z` scale of the entire game object.                                                            |
+| `resetPosition` / `reset-position`   | `Vector3 (string)` | `"0 -0.4 0"`                          | The `X Y Z` position of the reset button, relative to the board.                                        |
+| `resetRotation` / `reset-rotation`   | `Vector3 (string)` | `"0 0 0"`                             | The `X Y Z` euler rotation of the reset button.                                                         |
+| `resetScale` / `reset-scale`      | `Vector3 (string)` | `"1 1 1"`                             | The `X Y Z` scale of the reset button.                                                                  |
+| `hideUI` / `hide-ui`          | `boolean`     | `false`                               | Set to `true` to hide the reset button.                                                                 |
+| `hideBoard` / `hide-board`       | `boolean`     | `false`                               | Set to `true` to hide the game board.                                                                   |
+| `useCustomModels` / `use-custom-models` | `boolean`   | `false`                               | Set to `true` to use custom 3D models for pieces.                                                       |
+| `lighting`        | `string`      | `"unlit"`                             | Shader mode: `lit` or `unlit`.                                                                          |
+| `addLights` / `add-lights`       | `boolean`     | `true`                                | Set to `false` to prevent adding default lights when in lit mode.                                       |
 
 ---
